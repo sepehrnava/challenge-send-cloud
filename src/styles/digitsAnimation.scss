@@ -1,0 +1,33 @@
+@property --number {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --temp {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --v1 {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+@property --v2 {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.digits-animation {
+  transition: --number 1s;
+  --temp: calc(var(--number));
+  --v1: max(var(--temp) - 0.5, -10);
+  --v2: max((var(--temp) - var(--v1)) - 0.5, -10);
+  counter-reset: v1 var(--v1) v2 var(--v2);
+}
+.digits-animation::before {
+  @supports not (-ms-high-contrast: none) {
+    content: counter(v1);
+  }
+}

@@ -1,0 +1,119 @@
+@import "variables";
+@import "media";
+
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  color: $white;
+  text-align: center;
+
+  &__logo-container {
+    background-color: $header-color;
+    padding: 26px 0;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    height: 0vh;
+    min-height: 65px;
+    transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+
+    .header__logo {
+      width: 100px;
+      aspect-ratio: 100/14;
+      transition: all 2s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+  }
+
+  &__nav {
+    transition: all 350ms;
+    transform: translateY(-100%);
+
+    &--active {
+      transform: translateY(0%);
+    }
+
+    &--light {
+      color: $primary-color;
+      .header__underline {
+        background-color: $primary-color;
+      }
+    }
+
+    &.drawer-menu--active {
+      opacity: 1;
+      transform: translateX(0);
+      pointer-events: all;
+    }
+  }
+
+  &__list {
+    position: relative;
+    list-style: none;
+    padding: 33px 0 15px;
+    margin: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+
+    &__item {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      text-transform: uppercase;
+    }
+  }
+  &__underline {
+    position: absolute;
+    bottom: 0;
+    left: 0%;
+    width: 100px;
+    height: 1px;
+    border-radius: 100%;
+    background-color: $white;
+    transition: all 0.3s;
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+.drawer-menu--active {
+  height: 100vh;
+}
+
+@include responsive(lg) {
+  .header {
+    &__list {
+      padding: 17px 0 15px;
+      gap: 30px;
+      font-size: 15px;
+      font-weight: 400;
+    }
+  }
+}
+
+@include responsive(xs) {
+  .header {
+    &__nav {
+      opacity: 0;
+      pointer-events: none;
+      position: fixed;
+      left: 25px;
+      top: 100px;
+      z-index: 50;
+      transform: translateX(calc(-100% - 25px));
+      color: #fff;
+    }
+    &__list {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+    &__underline {
+      display: none;
+    }
+  }
+}

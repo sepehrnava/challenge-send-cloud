@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tesla Range Calculator</title>
+    <meta
+      name="description"
+      content="Tesla Range Calculator is a web application that simulates the range of a Tesla Model S based on different conditions."
+    />
+    <meta
+      name="keywords"
+      content="Tesla, Model S, Electric, Sedan, Car, Vehicle, Premium, Dual-Motor, All-Wheel Drive, Touchscreen, Software Updates"
+    />
+    <meta name="author" content="Sepehr Nava" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes" />
+    <meta name="theme-color" content="#121212" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Tesla Range calculator" />
+    <meta
+      name="twitter:description"
+      content="Tesla Range Calculator is a web application that simulates the range of a Tesla Model S based on different conditions."
+    />
+    <meta name="twitter:image" content="https://range-calculator-sepehr.vercel.app/hero.webp" />
+    <meta property="og:title" content="Tesla Range calculator" />
+    <meta
+      property="og:description"
+      content="Tesla Range Calculator is a web application that simulates the range of a Tesla Model S based on different conditions."
+    />
+    <meta property="og:image" content="https://range-calculator-sepehr.vercel.app/hero.webp" />
+    <meta property="og:url" content="https://range-calculator-sepehr.vercel.app" />
+    <meta property="og:site_name" content="Tesla Range Calculator" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/webp" />
+    <meta property="og:image:alt" content="Tesla Range Calculator" />
+
+    <link rel="canonical" href="https://range-calculator-sepehr.vercel.app" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/meta/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/meta/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/meta/favicon-16x16.png" />
+    <link rel="manifest" href="/meta/site.webmanifest" crossorigin="use-credentials" />
+    <link rel="mask-icon" href="/meta/safari-pinned-tab.svg" color="#ffffff" />
+    <link rel="stylesheet" href="/src/styles/index.scss" />
+    <script type="module" src="/src/app.js" defer></script>
+  </head>
+  <body>
+    <div id="loading" class="loading loading--active" role="alert" aria-live="assertive">
+      <img class="loading__logo" src="/images/logo.svg" alt="Tesla Logo" />
+      <div class="loading__container">
+        <div class="loading__bar"></div>
+      </div>
+    </div>
+
+    <header id="header" class="header" role="banner">
+      <div class="header__logo-container" id="header-logo">
+        <img src="/images/logo.svg" alt="Tesla Logo" class="header__logo" />
+        <div class="burger-menu" id="burger-menu">
+          <input class="menu-trigger hidden" id="burger-input" type="checkbox" aria-label="Toggle Menu" />
+          <div class="burger-menu--wrapper">
+            <div class="hamburger"></div>
+          </div>
+        </div>
+      </div>
+      <nav class="header__nav header__nav--active">
+        <ul class="header__list">
+          <li class="header__item">
+            <a title="MODEL S" href="#Model_S" class="header__link header__link--active" aria-label="Model S"
+              >MODEL S</a
+            >
+          </li>
+          <li class="header__item">
+            <a title="MODEL X" href="#Model_X" class="header__link" aria-label="Model X">MODEL X</a>
+          </li>
+          <li class="header__item">
+            <a title="3" href="#Model_3" class="header__link" aria-label="Model 3">MODEL 3</a>
+          </li>
+          <li class="header__item">
+            <a title="ROADSTER" href="#Roadster" class="header__link" aria-label="Roadster">ROADSTER</a>
+          </li>
+          <li class="header__item">
+            <a title="ENERGY" href="#Energy" class="header__link" aria-label="Energy">ENERGY</a>
+          </li>
+          <div class="header__underline" id="header__underline" aria-hidden="true"></div>
+        </ul>
+      </nav>
+    </header>
+
+    <main role="main">
+      <section class="hero">
+        <picture>
+          <source type="image/webp" srcset="/images/hero.webp" />
+          <img class="hero__image" id="hero-image" src="/images/hero.jpg" alt="Tesla Model S" />
+        </picture>
+      </section>
+      <section class="intro" id="intro">
+        <h1 class="intro__title text-h1">Far far away, behind the word mountains…</h1>
+        <p class="intro__text text-body">
+          A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a
+          paradisematic country, in which roasted parts of sentences fly into your mouth.
+        </p>
+
+        <a
+          title="Range Calculator"
+          href="#range-calculator"
+          class="button button--icon intro__button"
+          aria-label="Scroll down to Range Calculator"
+        >
+          <img src="/images/icon-chevron-down.svg" alt="Arrow down Icon" />
+        </a>
+        <div class="intro__anchor-link" id="range-calculator"></div>
+      </section>
+      <section class="range">
+        <p class="noscript range__noscript">
+          Please enable JavaScript in your browser settings in order to use the range calculator.
+        </p>
+
+        <div class="range__content">
+          <h2 class="range__header text-h2">Range per Charge</h2>
+          <div class="range__moving-car" aria-hidden="true">
+            <picture>
+              <source type="image/webp" srcset="/images/car-base.webp" />
+              <img class="range__car-image range__car-image--base" src="/images/car-base.png" alt="Tesla Model S" />
+            </picture>
+
+            <picture>
+              <source type="image/webp" srcset="/images/car-wheel.webp" />
+              <img
+                class="range__car-image range__car-image--wheel range__car-image--wheel-front"
+                src="/images/car-wheel.png"
+                alt="Tesla Model S"
+              />
+            </picture>
+
+            <picture>
+              <source type="image/webp" srcset="/images/car-wheel.webp" />
+              <img
+                class="range__car-image range__car-image--wheel range__car-image--wheel-rear"
+                src="/images/car-wheel.png"
+                alt="Tesla Model S"
+              />
+            </picture>
+          </div>
+          <div class="range__kilometer-container">
+            <div class="range__kilometer-item">
+              <img class="range__kilometer-logo" src="/images/100d.svg" alt="100D" />
+
+              <p id="range-100d" class="range__kilometer-value digits-animation" aria-live="polite" aria-atomic="true">
+                <span>KM</span>
+              </p>
+            </div>
+            <div class="range__kilometer-item">
+              <img class="range__kilometer-logo" src="/images/p100d.svg" alt="P100D" />
+
+              <p id="range-p100d" class="range__kilometer-value digits-animation" aria-live="polite" aria-atomic="true">
+                <span>KM</span>
+              </p>
+            </div>
+          </div>
+          <div class="range__specs-container">
+            <div class="range__section range__section--speed">
+              <div class="range__input-container">
+                <p>Speed</p>
+                <div
+                  class="range__stepper-input stepper-input"
+                  role="spinbutton"
+                  aria-valuenow="100"
+                  aria-valuemin="70"
+                  aria-valuemax="140"
+                  aria-label="Adjust Speed"
+                  aria-labelledby="speed-label"
+                >
+                  <label id="speed-label" hidden>Speed</label>
+                  <div class="stepper-input__counter">
+                    <div class="digits-animation" id="speed-range"></div>
+                    <span class="stepper-input__counter__label">KMH</span>
+                  </div>
+                  <div class="stepper-input__arrows">
+                    <img
+                      aria-label="Increase speed"
+                      class="stepper-input__arrows__image"
+                      src="/images/icon-thin-chevron-up.svg"
+                      alt="increase"
+                      id="speed-arrow-up"
+                    />
+                    <hr class="stepper-input__arrows__divider" />
+                    <img
+                      aria-label="Decrease speed"
+                      class="stepper-input__arrows__image"
+                      src="/images/icon-thin-chevron-down.svg"
+                      alt="decrease"
+                      id="speed-arrow-down"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="range__section range__section--temp">
+              <div class="range__input-container">
+                <p>Outside temperature</p>
+                <div
+                  class="range__stepper-input stepper-input"
+                  role="spinbutton"
+                  aria-valuenow="20"
+                  aria-valuemin="-10"
+                  aria-valuemax="40"
+                  aria-labelledby="temp-label"
+                >
+                  <label id="temp-label" hidden>Outside Temperature</label>
+                  <div class="stepper-input__counter">
+                    <div class="digits-animation" id="temp-range">°</div>
+                  </div>
+                  <div class="stepper-input__arrows">
+                    <img
+                      class="stepper-input__arrows__image"
+                      src="/images/icon-thin-chevron-up.svg"
+                      alt="increase"
+                      id="temp-arrow-up"
+                    />
+                    <hr class="stepper-input__arrows__divider" />
+                    <img
+                      class="stepper-input__arrows__image"
+                      src="/images/icon-thin-chevron-down.svg"
+                      alt="decrease"
+                      id="temp-arrow-down"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div class="range__ac-btn-container">
+                <button id="ac-btn" class="ac-btn" aria-pressed="false" aria-label="Air Conditioning or Heat Button">
+                  <span class="ac-btn__wrapper">
+                    <span class="ac-btn__text" id="ac-btn-text" aria-live="polite" style="min-width: 62px"> </span>
+                    <span class="ac-btn__icon ac-btn__icon--fan">
+                      <img src="/images/icon-fan-gray.svg" alt="Fan Icon" class="ac-btn__icon--gray" />
+                      <img src="/images/icon-fan-white.svg" alt="Fan Icon" class="ac-btn__icon--white" />
+                    </span>
+                    <span class="ac-btn__icon ac-btn__icon--wave">
+                      <img src="/images/icon-wave-gray.svg" alt="Wave Icon" class="ac-btn__icon--gray" width="33" />
+                      <img src="/images/icon-wave-white.svg" alt="Wave Icon" class="ac-btn__icon--white" width="33" />
+                    </span>
+                  </span>
+                </button>
+              </div>
+            </div>
+            <div class="range__section">
+              <div class="range__input-container" role="radiogroup" aria-labelledby="wheel-size-label">
+                <p>Wheels</p>
+                <label id="wheel-size-label" hidden>Wheel Size</label>
+                <button
+                  class="button button--gray button--gray--active button--wheel"
+                  id="wheel-19"
+                  role="radio"
+                  aria-checked="true"
+                  aria-describedby="wheel-size-description"
+                  aria-label="19 inch wheels"
+                >
+                  <img
+                    src="/images/icon-wheel.svg"
+                    alt="Wheel Icon"
+                    class="button--wheel--image button--wheel--image-19-inch"
+                  />
+                  19"
+                </button>
+              </div>
+
+              <div class="range__input-container">
+                <p>&nbsp;</p>
+                <button
+                  role="radio"
+                  aria-checked="false"
+                  class="button button--gray button--wheel"
+                  id="wheel-21"
+                  aria-describedby="wheel-size-description"
+                  aria-label="21 inch wheels"
+                >
+                  <img
+                    src="/images/icon-wheel.svg"
+                    alt="Wheel Icon"
+                    class="button--wheel--image button--wheel--image-21-inch"
+                  />
+                  21"
+                </button>
+              </div>
+              <p id="wheel-size-description" hidden>Select wheel size to calculate the range.</p>
+            </div>
+          </div>
+          <div class="text-body2 range__description">
+            <p class="text-body2 range__description__text">
+              The actual amount of range that you experience will vary based on your particular use conditions. Your
+              vehicle range is also dependent on other conditions, such as vehicle configuration, battery age and
+              condition, driving style and operating, environmental and climate conditions. See how some of these
+              particular use conditions may affect your range in our simulation model.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer" role="contentinfo">
+      <div class="footer__section-container">
+        <article class="footer__section">
+          <h3 class="footer__title">Contact Us</h3>
+          <div class="footer__content">
+            <p class="footer__text">+44 345 678 903</p>
+            <p class="footer__text">adobexd@mail.com</p>
+            <a title="Find a Store" href="#" class="footer__link" aria-label="Find a Store">Find a Store</a>
+          </div>
+        </article>
+        <article class="footer__section">
+          <h3 class="footer__title">Customer Service</h3>
+          <div class="footer__content">
+            <a title="Contact Us" href="#" class="footer__link" aria-label="Contact Us">Contact Us</a>
+            <a title="Order Status" href="#" class="footer__link" aria-label="Order Status">Ordering & Payment</a>
+            <a title="Shipping" href="#" class="footer__link" aria-label="Shipping">Shipping</a>
+            <a title="Returns" href="#" class="footer__link" aria-label="Returns">Returns</a>
+            <a title="FAQ" href="#" class="footer__link" aria-label="FAQ">FAQ</a>
+          </div>
+        </article>
+        <article class="footer__section">
+          <h3 class="footer__title">Information</h3>
+          <div class="footer__content">
+            <a title="About this Example" href="#" class="footer__link" aria-label="About this Example"
+              >About this Example</a
+            >
+            <a title="Careers" href="#" class="footer__link" aria-label="Careers">Work With Us</a>
+            <a title="Privacy Policy" href="#" class="footer__link" aria-label="Privacy Policy">Privacy Policy</a>
+            <a title="Terms & Conditions" href="#" class="footer__link" aria-label="Terms & Conditions"
+              >Terms & Conditions</a
+            >
+            <a title="Press Enquiries" href="#" class="footer__link" aria-label="Press Enquiries">Press Enquiries</a>
+          </div>
+        </article>
+        <article class="footer__section footer__section--subscribe">
+          <h3 class="footer__title footer_title_subscribe">Subscribe to us via Email</h3>
+          <p class="footer__text">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+          <form class="footer__form">
+            <input
+              id="footer-form-email"
+              type="email"
+              placeholder="Email Address"
+              class="footer__input"
+              aria-label="Email Address"
+            />
+            <button id="footer-form-submit" aria-label="Subscribe button" type="submit" class="footer__button">
+              SUBSCRIBE
+            </button>
+          </form>
+        </article>
+      </div>
+    </footer>
+    <noscript>
+      <style>
+        .loading {
+          display: none;
+        }
+        .noscript {
+          display: block;
+        }
+
+        .range {
+          position: relative;
+        }
+
+        .range__content {
+          filter: blur(15px);
+        }
+        .range__noscript {
+          text-align: center;
+          padding: 20px;
+          position: absolute;
+          top: 20%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          z-index: 10;
+          font-size: 30px;
+          font-size: bold;
+        }
+        .intro a {
+          filter: blur(10px);
+          pointer-events: none;
+        }
+      </style>
+    </noscript>
+    <script>
+      window.MSInputMethodContext &&
+        document.documentMode &&
+        document.write(
+          '<script src="https://cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js"><\/script>'
+        );
+    </script>
+  </body>
+</html>

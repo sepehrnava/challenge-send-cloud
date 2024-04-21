@@ -1,0 +1,139 @@
+@import "variables";
+@import "media";
+
+.footer {
+  padding: 60px;
+  background-color: $black;
+  color: $white;
+
+  &__section-container {
+    max-width: 1033px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+
+  &__section {
+    flex: 1 1 200px;
+    margin: 10px;
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &--subscribe {
+      .footer__title {
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .footer__text {
+        line-height: 20px;
+        color: #7fc4fd;
+        margin-top: 20px;
+        max-width: 237px;
+      }
+
+      .footer__form {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+      }
+
+      .footer__input {
+        border: 1px solid #7fc4fd;
+        border-radius: 4px;
+        background-color: transparent;
+        padding: 10px 20px;
+        min-width: 210px;
+
+
+        &::placeholder {
+          color: $white;
+        }
+      }
+
+      .footer__button {
+        background-color: $white;
+        border-radius: 4px;
+        padding: 16.5px 30px;
+        font-family: "Montserrat";
+        font-size: 11px;
+        font-weight: bold;
+        line-height: 12px;
+        color: #006cc4;
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .footer__button:hover {
+        background-color: #006cc4;
+        color: $white;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    &.footer_title_subscribe {
+      text-transform: none;
+      font-family: "Arial";
+      font-size: 14px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__text,
+  &__link,
+  &__input,
+  &__button {
+    text-decoration: none;
+    display: block;
+    font-family: "Arial";
+    font-size: 14px;
+    line-height: 24px;
+    border: none;
+    color: inherit;
+  }
+}
+
+@include responsive(xl) {
+  .footer {
+    &__form {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+@include responsive(lg) {
+  .footer {
+    padding: 70px 25px 70px 25px;
+    &__section-container {
+      gap: 40px;
+    }
+    &__section {
+      flex: auto;
+      gap: 15px;
+      .footer__button {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+@include responsive(md) {
+  .footer {
+    &__section-container {
+      flex-direction: column;
+    }
+  }
+}

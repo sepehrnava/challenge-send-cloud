@@ -1,0 +1,82 @@
+@import "variables";
+@import "media";
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $black;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  transform: translateY(-100%);
+  transition: transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+
+  &--active {
+    transform: translateY(0%);
+  }
+
+  &__logo {
+    width: 30vw;
+    aspect-ratio: 438/61;
+    animation: move 2s forwards cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  &__container {
+    opacity: 0;
+    animation: fade 2s 1s forwards cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  &__bar {
+    height: 4px;
+    width: 130px;
+    --c: no-repeat linear-gradient(#fff 0 0);
+    background: var(--c), var(--c), #aaa;
+    background-size: 60% 100%;
+    animation: progress 2s infinite;
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translatex(-70vw);
+  }
+  100% {
+    transform: translatex(0vw);
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes progress {
+  0% {
+    background-position: -150% 0, -150% 0;
+  }
+  66% {
+    background-position: 250% 0, -150% 0;
+  }
+  100% {
+    background-position: 250% 0, 250% 0;
+  }
+}
+
+@include responsive(md) {
+  .loading {
+    gap: 70px;
+    &__logo {
+      width: 60vw;
+    }
+  }
+}

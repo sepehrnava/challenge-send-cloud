@@ -1,0 +1,97 @@
+@import "media";
+@import url("/src/styles/Montserrat.scss");
+
+* {
+  font-family: Montserrat, sans-serif, Arial;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.text-h1 {
+  font-size: 64px;
+  font-weight: 300;
+}
+
+.text-h2 {
+  font-size: 38px;
+  font-weight: 400;
+}
+
+.text-body {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: Arial;
+  line-height: 22px;
+}
+
+.text-body2 {
+  font-family: "Arial";
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+@include responsive(xl) {
+  .text-h1 {
+    font-size: 48px;
+  }
+  .text-h2 {
+    font-size: 32px;
+  }
+  .text-body {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .text-body2 {
+    font-size: 13px;
+    line-height: 20px;
+  }
+}
+@include responsive(lg) {
+  .text-h1 {
+    font-size: 40px;
+  }
+  .text-h2 {
+    font-size: 28px;
+  }
+  .text-body {
+    font-size: 14px;
+    line-height: 18px;
+  }
+  .text-body2 {
+    font-size: 13px;
+    line-height: 18px;
+  }
+}
+@include responsive(md) {
+  .text-h1 {
+    font-size: 32px;
+  }
+  .text-h2 {
+    font-size: 20px;
+  }
+  .text-body {
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .text-body2 {
+    font-size: 13px;
+    line-height: 16px;
+  }
+}

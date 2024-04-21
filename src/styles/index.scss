@@ -1,0 +1,380 @@
+// Variables and mixins
+@import "variables";
+@import "media";
+
+/* Imports */
+@import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css");
+@import url("/src/styles/typography.scss");
+@import url("/src/styles/stepperInput.scss");
+@import url("/src/styles/footer.scss");
+@import url("/src/styles/acButton.scss");
+@import url("/src/styles/header.scss");
+@import url("/src/styles/loading.scss");
+@import url("/src/styles/digitsAnimation.scss");
+@import url("/src/styles/burgerMenu.scss");
+
+/* Global styles */
+* {
+  box-sizing: border-box;
+}
+
+*:focus {
+  outline: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+body {
+  overscroll-behavior-y: none;
+  overflow-x: hidden;
+}
+figure {
+  margin: 0;
+}
+
+.noscript {
+  display: none;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Base button styling */
+.button {
+  appearance: none;
+  background-color: transparent;
+  border: 2px solid $primary-color;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  text-decoration: none;
+  transition: all 350ms;
+  user-select: none;
+  touch-action: manipulation;
+  will-change: transform;
+
+  &--icon {
+    border-radius: 100%;
+    padding: 29px 23px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+
+    &:disabled {
+      pointer-events: none;
+    }
+
+    img {
+      width: 28px;
+      aspect-ratio: 28/17;
+    }
+
+    &:hover {
+      color: $white;
+      background-color: $primary-color;
+      box-shadow: rgba(0, 0, 0, 0.25) 0 0px 15px;
+
+      img {
+        filter: invert(100%);
+        transition: all 350ms;
+      }
+    }
+
+    &:active {
+      box-shadow: none;
+    }
+  }
+
+  &--gray {
+    background-color: #f0f2f7;
+    border: 1px solid #b9bed1;
+    padding: 7px 12px;
+    height: 100%;
+    color: $primary-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    width: 215px;
+    align-self: flex-end;
+    transition-duration: 0.2s;
+
+    img {
+      filter: grayscale(1);
+    }
+    &--active {
+      border: 1px solid $secondary-color;
+      img {
+        filter: grayscale(0);
+
+        transform: rotate(-40deg);
+      }
+    }
+  }
+}
+
+section {
+  color: $primary-color;
+}
+
+/* Hero section styles */
+.hero {
+  background-color: var(--primary-color);
+  position: relative;
+  overflow: visible;
+  &__image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1400/800;
+  }
+}
+
+/* Intro section styles */
+.intro {
+  padding-top: 93px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title {
+    max-width: 810px;
+  }
+  &__text {
+    max-width: 532px;
+    margin-top: 22px;
+  }
+  &__button {
+    margin-top: 59px;
+  }
+  &__anchor-link {
+    display: block;
+    position: relative;
+    top: -65px;
+    visibility: hidden;
+  }
+}
+
+/* Range calculator section */
+.range {
+  margin-top: 58px;
+  text-align: center;
+  padding: 0px 40px 92px 40px;
+  &__moving-car {
+    position: relative;
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+  &__car-image {
+    &--base {
+      width: 100%;
+      aspect-ratio: 1400/388;
+    }
+
+    &--wheel {
+      position: absolute;
+      width: 9.5%;
+      height: auto;
+      transform-origin: center;
+
+      &-front {
+        bottom: 14.1%;
+        left: 24.7%;
+      }
+
+      &-rear {
+        bottom: 14.1%;
+        left: 64%;
+      }
+
+      &-accelerate {
+        animation: rotate 1.5s cubic-bezier(0.55, 0.055, 0.675, 0.19),
+          rotate 0.5s infinite linear 1.5s;
+      }
+    }
+  }
+  &__kilometer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 132px;
+    margin-top: 9px;
+  }
+  &__kilometer-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+  }
+  &__kilometer-logo {
+    height: 23px;
+    aspect-ratio: 203/26;
+  }
+
+  &__kilometer-value {
+    color: $secondary-color;
+    font-size: 46px;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 13px;
+    span {
+      font-size: 20px;
+      font-weight: 700;
+    }
+  }
+  &__specs-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    max-width: 1800px;
+    margin: 65px auto 0px auto;
+  }
+
+  &__ac-btn-container {
+    align-self: flex-end;
+  }
+
+  &__section {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 3%;
+    gap: 24px;
+    color: #707070;
+    font-size: 20px;
+    border-left: 1px solid #b9bed1;
+    flex: 2;
+  }
+
+  &__section--speed {
+    border-left: none;
+    flex: 1.3;
+  }
+
+  &__section--temp {
+  }
+
+  &__input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    color: #707070;
+    font-size: 20px;
+  }
+
+  &__description {
+    max-width: 1800px;
+    margin: 65px auto 0px auto;
+    margin-top: 65px;
+
+    &__text {
+      text-align: left;
+      max-width: 1067px;
+    }
+  }
+}
+
+.button--wheel {
+  .button--wheel--image {
+    transition: transform 0.5s;
+    aspect-ratio: 1/1;
+  }
+  .button--wheel--image-19-inch {
+    width: 54px;
+  }
+  .button--wheel--image-21-inch {
+    width: 64px;
+  }
+}
+
+.button--wheel:hover {
+  .button--wheel--image {
+    transform: rotate(-40deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@include responsive(xl) {
+  .button--gray {
+    width: 160px;
+    padding: 6px 12px;
+    min-height: 64px;
+  }
+  .range {
+    &__input-container {
+      font-size: 15px;
+    }
+  }
+  .button--wheel {
+    .button--wheel--image-19-inch {
+      width: 40px;
+    }
+    .button--wheel--image-21-inch {
+      width: 45px;
+    }
+  }
+}
+
+@include responsive(lg) {
+  .hero {
+    margin-top: 65px;
+  }
+  .button {
+    &--icon {
+      padding: 23px 20px;
+      img {
+        width: 20px;
+      }
+    }
+  }
+
+  .intro {
+    padding: 70px 25px 0px 25px;
+  }
+
+  .range {
+    padding: 0px 0px 92px 0px;
+    &__specs-container {
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 30px 0;
+      align-items: flex-start;
+      padding: 0px 25px 92px 25px;
+    }
+    &__moving-car {
+      margin: 30px 0px 30px 0px;
+    }
+    &__kilometer-container {
+      gap: 0px;
+      justify-content: space-around;
+    }
+    &__kilometer-logo {
+      height: 17px;
+    }
+    &__kilometer-value::before {
+      font-size: 25px;
+    }
+    &__section {
+      border: none;
+      flex: auto;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      width: 100%;
+      gap: 0px 30px;
+    }
+    &__description {
+      padding: 0px 25px 0px 25px;
+      margin-top: 0px;
+    }
+  }
+}

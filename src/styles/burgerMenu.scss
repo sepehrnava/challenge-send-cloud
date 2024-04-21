@@ -1,0 +1,71 @@
+@import "variables";
+@import "media";
+
+$s: 2px;
+
+.burger-menu {
+  display: none;
+  position: absolute;
+  right: 15px;
+  top: 25px;
+
+  &--wrapper {
+    cursor: pointer;
+    margin: auto;
+    width: $s * 10;
+    height: $s * 8;
+
+    .hamburger {
+      background: $white;
+      width: $s * 10;
+      height: $s;
+      position: relative;
+      transition: all 10ms 300ms ease;
+      transform: translateY($s * 4);
+
+      &:before,
+      &:after {
+        transition: top 300ms 350ms ease, transform 300ms 50ms ease;
+        position: absolute;
+        background: $white;
+        width: $s * 10;
+        height: $s;
+        content: "";
+      }
+      &:before {
+        top: $s * -3;
+        left: 0;
+      }
+
+      &:after {
+        top: $s * 3;
+        left: 0;
+      }
+    }
+  }
+
+  .menu-trigger:checked {
+    ~ .burger-menu--wrapper {
+      .hamburger {
+        background: transparent;
+        &:after,
+        &:before {
+          transition: top 300ms 50ms ease, transform 300ms 350ms ease;
+          top: 0;
+        }
+        &:before {
+          transform: rotate(45deg);
+        }
+        &:after {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+@include responsive(xs) {
+  .burger-menu {
+    display: block;
+  }
+}
